@@ -38,16 +38,6 @@ spec:
     TOKEN=credentials('d4814629-eb36-4996-8544-2acba4d647ee')
   }
   stages {
-      stage("debug") {
-          steps {
-              container('kubectl') {
-                  sh '''
-                      cd $SERVICE_NAME
-                      kubectl --token=$TOKEN -n tester get all
-                  '''
-              }
-          }
-      }
       stage("Build") {
           steps {
               container('dnd') {
