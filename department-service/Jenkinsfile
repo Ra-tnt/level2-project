@@ -32,7 +32,7 @@ spec:
     }
   }
   environment {
-    CREDS = credentials('Raghadq_docker_creds')
+    CREDS = credentials('raghadq-docker-cred')
     DOCKER_NAMESPACE = 'raghadq'
     SERVICE_NAME = 'department-service'
     TOKEN=credentials('d4814629-eb36-4996-8544-2acba4d647ee')
