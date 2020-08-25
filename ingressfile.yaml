@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
    name: test-ingress
-   namespace: test
+   namespace: jenkins
    annotations:
       ingress.kubernetes.io/ssl-redirect: "false"
 spec:
