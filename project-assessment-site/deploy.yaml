@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: main-site
+  name: project-assessment-site
   labels:
-    app: main-site
+    app: project-assessment-site
     type: api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: main-site
+      app: project-assessment-site
   template:
     metadata:
       labels:
-        app: main-site
+        app: project-assessment-site
     spec:
       containers:
-      - name: main-site
+      - name: project-assessment-site
         image: bryandollery/department-service
         ports:
         - containerPort: 80
