@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: main-site
+  labels:
+    app: main-site
+    type: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main-site
+  template:
+    metadata:
+      labels:
+        app: main-site
+    spec:
+      containers:
+      - name: main-site
+        image: bryandollery/department-service
+        ports:
+        - containerPort: 80
