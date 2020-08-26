@@ -10,7 +10,7 @@ metadata:
     service_type: REST
 spec:
   containers:
-  - name: pmss
+  - name: dnd
     image: docker:latest
     command: 
     - cat
@@ -35,12 +35,12 @@ environment {
     CREDS = credentials('raghadq-docker-cred')
     DOCKER_NAMESPACE = 'raghadq'
     SERVICE_NAME = 'project-assessment-site'
-    TOKEN=credentials('fbfe41a6-4f4c-4db5-8f6a-ca2d5c1c057f')
+    TOKEN=credentials('efe6ba99-0b7e-4ed9-b0c8-c7db69500567')
   }
   stages {
       stage("Build") {
           steps {
-              container('pmss') {
+              container('dnd') {
                   sh '''
                       cd $SERVICE_NAME
                       docker build --tag $DOCKER_NAMESPACE/$SERVICE_NAME .
@@ -50,7 +50,7 @@ environment {
       }
       stage("Release") {
           steps {
-              container('pmss') {
+              container('dnd') {
                   sh '''
                       docker login -p $CREDS_PSW -u $CREDS_USR
                       docker push $DOCKER_NAMESPACE/$SERVICE_NAME
@@ -63,8 +63,7 @@ environment {
               container('kubectl') {
                   sh '''
                       cd $SERVICE_NAME
-                      kubectl --token=$TOKEN -n test apply -f deploy.yaml -f service.yaml
-                      kubectl apply -f ../ingressfile.yaml
+                      kubectl --token=$TOKEN -n test apply -f deploy.yaml -f service.yaml -f ingressfile.yaml
                   '''
               }
           }
