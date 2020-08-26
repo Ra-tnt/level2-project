@@ -10,9 +10,7 @@ RUN cd /src && \
     npm install
 
 FROM node
-COPY --from=sourcing /src/node_modules /mynodeapp/node_modules
-
-# bundle app source
-COPY --from=sourcing /src/index.js /mynodeapp/
+COPY --from=sourcing /src/node_modules /mynodeapp/node_modules && \
+     /src/index.js /mynodeapp/
 workdir /mynodeapp
 CMD ["node","index.js"]
