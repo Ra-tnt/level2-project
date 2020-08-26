@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
       - name: office-service
-        image: raghadq/office-service
+        image: raghadq/office-service:v1
         ports:
         - containerPort: 80
