@@ -1,11 +1,15 @@
-from node as build
-copy index.js /src/
-copy package* /src/
-run cd /src && \
-    npm install
-from node
-copy --from=build /src/node_modules /dist/node_modules/
-copy index.js /dist/
-workdir /dist
-cmd ["node", "index.js"]
+FROM node
 
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+RUN npm install
+
+# bundle app source
+COPY . .
+
+EXPOSE 80
+
+CMD ["node","index.js"]
