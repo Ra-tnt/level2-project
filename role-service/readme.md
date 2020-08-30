@@ -6,4 +6,4 @@ Exposes an http service endpoint on port 80 with the /role/ context path
 
 eg:
 
-http://{host}/role/
+http://{instance-ip}/role/
