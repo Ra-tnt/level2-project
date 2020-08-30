@@ -63,7 +63,8 @@ environment {
               container('kubectl') {
                   sh '''
                       cd $SERVICE_NAME
-                      kubectl --token=$TOKEN -n test apply -f deploy.yaml -f service.yaml
+                      kubectl --token=$TOKEN -n test apply -f deploy.yaml
+                      kubectl --token=$TOKEN -n test apply -f service.yaml
                   '''
               }
           }
