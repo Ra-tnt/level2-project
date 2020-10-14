@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: 
+  password:
+#before setting the username or password here you should convert them using base64
+#echo 'yourUsername' | base64 
+#echo 'yourPassword' | base64

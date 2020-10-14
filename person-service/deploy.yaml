@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: person-service
+  namespace: theta
+  labels:
+    app: person-service
+    type: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: person-service
+  template:
+    metadata:
+      labels:
+        app: person-service
+    spec:
+      containers:
+      - name: person-service
+        image: ma404/person-service
+        ports:
+        - containerPort: 80

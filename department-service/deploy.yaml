@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: department-service
+  namespace: theta
+  labels:
+    app: department
+    type: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: department-service
+  template:
+    metadata:
+      labels:
+        app: department-service
+    spec:
+      containers:
+      - name: department-service
+        image: ma404/department-service
+        ports:
+        - containerPort: 80
